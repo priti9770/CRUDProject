@@ -1,0 +1,59 @@
+{% extends 'student/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+    <h4 class="text-center-alert alert-info">Show</h4>
+    <form action=""method="POST">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit"class="btn btn-primary" value="Add">
+    </form>
+  </div>
+
+<div class="col-sm-7 offset-1">
+  <h4 class="text-center alert -warning">Show informmatio</h4>
+<!--  # table tabhi bane jab koi record ho -->
+  {% if stu %}
+  <table class="table"class="table-success">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gender</th>
+        <th scope="col">B-Date</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+<!--    for achieving  table data  throught loop -->
+    {% for st in stu %}
+    <tr>
+      <th scope="row">{{st.id}}</th>
+      <td>{{st.name}}</td>
+      <td>{{st.email}}</td>
+      <td>{{st.gender}}</td>
+      <td>{{st.birth_date}}</td>
+
+      <td><a href="{% url 'updatedata' st.id %}"
+              class="btn btn-warning btn-sm">Edit</a></td>
+
+      <td>
+        <form action="{% url  'deletedata' st.id%}"method="post">
+          {% csrf_token  %}
+
+          <input type="submit" class="btn btn-danger btn-sm"
+          value="Delete">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h4>No data</h4>
+  {% endif %}
+</div>
+</div>
+{% endblock content %}

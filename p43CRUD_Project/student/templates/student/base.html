@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD-APPLICATION</title>
+    <link rel="stylesheet"href="{% static 'student/css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center alert alert-dager">
+        Function Based Views Using Model from CRUD Project
+    </h2>
+    {% block content %}{% endblock content %}
+</div>
+<script src="'{% static 'student/js/bootstrap.min.js'%}"></script>
+<script src="'{% static 'student/js/jquery.js'%}"></script>
+<script src="'{% static 'student/js/proper.js'%}"></script>
+</body>
+</html>
